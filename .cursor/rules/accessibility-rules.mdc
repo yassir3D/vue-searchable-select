@@ -1,0 +1,26 @@
+---
+description: Accessibility and keyboard navigation rules
+globs: src/components/**/*.vue
+alwaysApply: false
+---
+
+# Accessibility rules
+
+Implement the component using the ARIA combobox/listbox pattern.
+
+Required:
+- Input `role="combobox"`
+- `aria-expanded`
+- `aria-controls`
+- `aria-activedescendant` when an option is highlighted
+- List `role="listbox"`
+- Option `role="option"`
+- `aria-selected` on options
+
+Keyboard behavior:
+- ArrowDown opens list and moves highlight down.
+- ArrowUp opens list and moves highlight up.
+- Enter selects highlighted option.
+- Escape closes dropdown.
+- Tab allows normal focus movement and closes dropdown.
+- Mouse selection must not break focus behavior.

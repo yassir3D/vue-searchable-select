@@ -1,0 +1,25 @@
+---
+description: Async search and race-condition rules
+globs: src/**/*.{vue,ts}
+alwaysApply: false
+---
+
+# Async search rules
+
+Async option loading must be robust.
+
+Required behavior:
+- Debounce user input before calling async loader.
+- Abort the previous request before starting a new request.
+- Use a monotonically increasing request id to prevent stale responses from overwriting newer state.
+- Treat `AbortError` as controlled cancellation, not a user-facing error.
+- Expose loading, error, and options state.
+- Never allow a slow earlier request to overwrite a fast later request.
+- Clean up timeout and `AbortController` on unmount.
+
+Naive async code is not acceptable.
+
+```ts
+let requestId = 0
+let controller: AbortController | null = null
+```

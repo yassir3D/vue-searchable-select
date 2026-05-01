@@ -1,0 +1,31 @@
+---
+description: Vue 3 component standards
+globs: src/**/*.{vue,ts}
+alwaysApply: false
+---
+
+# Vue component standards
+
+Use Vue 3 Composition API with `<script setup lang="ts">`.
+
+Component standards:
+- Props must be explicit and typed.
+- Emits must be explicit and typed.
+- Prefer computed values over duplicated state.
+- Prefer small composables for reusable behavior.
+- Avoid unnecessary watchers.
+- Clean up event listeners, timers, and abort controllers.
+- Keep DOM-related logic isolated.
+- Use readable names.
+
+TypeScript standards:
+- Do not use `any`.
+- Make async states explicit.
+- Keep component API stable and documented.
+
+```vue
+<script setup lang="ts">
+const props = defineProps<{ modelValue: string | null }>()
+const emit = defineEmits<{ 'update:modelValue': [value: string | null] }>()
+</script>
+```

@@ -1,0 +1,34 @@
+---
+description: Project context for Innercrowd searchable select assignment
+alwaysApply: true
+---
+
+# Project context
+
+This project is a Vue 3 + TypeScript + Vite implementation of a reusable `SearchableSelect` component.
+
+Primary evaluation goals:
+- Reusable component design
+- Strong TypeScript types
+- Accessible keyboard navigation
+- Robust async behavior
+- Clear AI-assisted workflow evidence
+
+The component must support:
+- Synchronous array options
+- Async loader function
+- Debounced search
+- Request cancellation with `AbortController`
+- Protection against out-of-order async responses
+- Loading, empty, and error states
+- Click selection
+- Keyboard navigation
+- Escape close behavior
+- Click outside close behavior
+
+Avoid:
+- UI libraries
+- Global stores
+- Untyped props or events
+- Overengineering
+- Generic "clean code" responses without project-specific reasoning

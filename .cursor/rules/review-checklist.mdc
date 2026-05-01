@@ -1,0 +1,20 @@
+---
+description: Manual review checklist
+globs: "{README.md,src/**/*}"
+alwaysApply: false
+---
+
+# Review checklist
+
+Before finalizing, verify:
+- Sync options work.
+- Async options work.
+- Debouncing works.
+- Previous async requests are cancelled.
+- Out-of-order responses cannot overwrite current results.
+- Keyboard navigation works from closed and open states.
+- Enter selects.
+- Escape closes.
+- Click outside closes.
+- Empty, loading, and error states are visible.
+- README explains API, architecture, AI workflow, and tradeoffs.
