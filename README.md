@@ -176,9 +176,10 @@ State ownership is kept local to the component and composables, with no global s
 
 Cursor was used with explicit mode shifts and rule-driven constraints:
 
-- **Model**: Codex 5.3
+- **Model**: Cursor Premium model selection
 - **Plan mode**: used first to create and validate the implementation plan.
 - **Agent mode**: used to implement the approved plan end-to-end (component, composables, docs, and tests).
+- **Ask mode**: used to review async race conditions, accessibility, and keyboard edge cases before final fixes.
 
 `.cursor/rules` constrained implementation decisions:
 
@@ -187,6 +188,8 @@ Cursor was used with explicit mode shifts and rule-driven constraints:
 - `async-search-rules.mdc`: enforced debounce, cancellation, request-id stale guard, and explicit async states.
 - `accessibility-rules.mdc`: enforced combobox/listbox ARIA semantics and keyboard contract.
 - `review-checklist.mdc`: enforced final validation criteria and README coverage.
+
+`.cursorignore` excludes generated or low-signal files such as `node_modules`, `dist`, and coverage output so AI context stays focused on source, tests, docs, and workflow rules.
 
 ## AI decomposition and control strategy
 
@@ -221,3 +224,18 @@ Tests are intentionally focused on the highest-risk behavior, not snapshot-heavy
 - stale response protection (earlier slow response cannot overwrite newer result)
 
 Test file: `src/components/SearchableSelect.test.ts`
+
+## Manual QA checklist
+
+Manually verified:
+
+- typing filters sync options
+- mouse click selects an option
+- ArrowUp/ArrowDown move the highlighted option
+- Enter selects highlighted option
+- Escape closes the dropdown
+- Tab closes while preserving native focus movement
+- outside click closes the dropdown
+- async loading state appears
+- async error state appears
+- slow earlier async response does not overwrite faster later response
